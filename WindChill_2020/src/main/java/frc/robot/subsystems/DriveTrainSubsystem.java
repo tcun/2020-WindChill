@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Joystick;
 
 public class DriveTrainSubsystem extends SubsystemBase {
   /**
@@ -20,6 +21,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   private final PWMVictorSPX leftMotor = new PWMVictorSPX(0);
   private final PWMVictorSPX rightMotor = new PWMVictorSPX(1); 
+  private final Joystick rightJoystick = new Joystick(0);
+  private final Joystick leftJoystick = new Joystick(1);
 
   public final DifferentialDrive robotDrive = new DifferentialDrive(leftMotor, rightMotor);
   
@@ -30,6 +33,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
     {   
        robotDrive.tankDrive(xbox.getY(Hand.kLeft), xbox.getY(Hand.kRight));
     }
+    
+  public void takeJoystickInputs(){
+    robotDrive.tankDrive(leftJoystick.getY(Hand.kLeft), rightJoystick.getY(Hand.kRight));
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
