@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -16,14 +17,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  */
 public class DriveWithJoysticks extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ExampleSubsystem m_subsystem;
+  private final DriveTrainSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public DriveWithJoysticks(ExampleSubsystem subsystem) {
+  public DriveWithJoysticks(DriveTrainSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -37,7 +38,7 @@ public class DriveWithJoysticks extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.takeJoyStickInputs(RobotContainer.getLeftJoystick(), RobotContainer.getRightJoystick());
+    m_subsystem.takeJoystickInputs(RobotContainer.getLeftJoystick(), RobotContainer.getRightJoystick());
 
   }
 
