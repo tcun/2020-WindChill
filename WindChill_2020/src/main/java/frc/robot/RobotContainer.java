@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import frc.robot.commands.DriveWithController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.SpinControlMotor;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -38,11 +39,15 @@ public class RobotContainer {
 
   public final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  public final DriveWithController drive = new DriveWithController(m_driveTrainSub);
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Configure the button bindings &
+    // Configure the button bindings & default commands
+
+    m_driveTrainSub.setDefaultCommand(drive);
+
     configureButtonBindings();
 
     new JoystickButton(xboxController, Button.kA.value)
