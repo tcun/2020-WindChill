@@ -1,0 +1,31 @@
+DriveTrainSubsystem
+======================
+aim
+DriveWithJoysticks
+DriveWithController
+autonomousCommand
+
+PanelSpinnerSubsystem
+======================
+SpinControlMotor
+getRotateCount (Encoder)
+getColor (Color Sensor)
+rotateControlMotor
+rotateToColor
+
+
+ShooterSubsystem
+======================
+shoot
+activateConveyor
+checkRPM (Encoder)
+getTargetAngle
+
+Intake Subsystem
+======================
+runArmRoller
+reverseSpit
+
+ClimbSubsystem
+======================
+???

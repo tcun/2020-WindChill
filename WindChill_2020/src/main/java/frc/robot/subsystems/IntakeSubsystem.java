@@ -10,17 +10,15 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ShooterSubsystem extends SubsystemBase {
-
-  private final PWMVictorSPX rightLaunchMotor = new PWMVictorSPX(4);
-  private final PWMVictorSPX leftLaunchMotor = new PWMVictorSPX(5); 
-  private final PWMVictorSPX conveyorMotor = new PWMVictorSPX(6); 
-
+public class IntakeSubsystem extends SubsystemBase {
+  
+  private final PWMVictorSPX rollerMotor = new PWMVictorSPX(7);
   /**
    * Creates a new ExampleSubsystem.
    */
-  public ShooterSubsystem() {
+  public IntakeSubsystem() {
     
+
   }
 
   @Override
