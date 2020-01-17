@@ -21,8 +21,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   private final PWMVictorSPX leftMotor = new PWMVictorSPX(0);
   private final PWMVictorSPX rightMotor = new PWMVictorSPX(1); 
-  private final Joystick rightJoystick = new Joystick(0);
-  private final Joystick leftJoystick = new Joystick(1);
+  ;
 
   public final DifferentialDrive robotDrive = new DifferentialDrive(leftMotor, rightMotor);
   
@@ -31,11 +30,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
   public void takeXboxInputs(XboxController xbox)
     {   
-       robotDrive.tankDrive(xbox.getY(Hand.kLeft), xbox.getY(Hand.kRight));
+      robotDrive.tankDrive(xbox.getY(Hand.kLeft), xbox.getY(Hand.kRight));
     }
-    
-  public void takeJoystickInputs(){
-    robotDrive.tankDrive(leftJoystick.getY(Hand.kLeft), rightJoystick.getY(Hand.kRight));
+
+  public void takeJoystickInputs(Joystick leftJoy, Joystick rightJoy){
+    robotDrive.tankDrive(leftJoy.getY(), rightJoy.getY());
   }
   @Override
   public void periodic() {

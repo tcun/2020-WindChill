@@ -7,14 +7,18 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PanelSpinnerSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public PanelSpinnerSubsystem() {
+  public final PWMVictorSPX spinnyMotor = new PWMVictorSPX(3);
 
+
+  public PanelSpinnerSubsystem() {
+    
   }
 
   @Override
