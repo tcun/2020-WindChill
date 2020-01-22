@@ -8,10 +8,15 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Joystick;
 
 public class DriveTrainSubsystem extends SubsystemBase {
@@ -19,11 +24,16 @@ public class DriveTrainSubsystem extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
 
-  private final PWMVictorSPX leftMotor = new PWMVictorSPX(0);
-  private final PWMVictorSPX rightMotor = new PWMVictorSPX(1); 
-  ;
+  private final WPI_TalonSRX leftMotorFront = new WPI_TalonSRX(0);
+  private final WPI_TalonSRX leftMotorBack = new WPI_TalonSRX(1); 
+  private final SpeedControllerGroup leftDriveMotors = new SpeedControllerGroup(leftMotorFront, leftMotorBack);
 
-  public final DifferentialDrive robotDrive = new DifferentialDrive(leftMotor, rightMotor);
+  private final WPI_TalonSRX rightMotorFront = new WPI_TalonSRX(2); 
+  private final WPI_TalonSRX rightMotorBack = new WPI_TalonSRX(3); 
+  private final SpeedControllerGroup rightDriveMotors = new SpeedControllerGroup(rightMotorFront, rightMotorBack);
+
+
+  public final DifferentialDrive robotDrive = new DifferentialDrive(leftDriveMotors, rightDriveMotors);
   
   public DriveTrainSubsystem() {
 
