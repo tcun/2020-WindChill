@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -14,7 +16,7 @@ public class PanelSpinnerSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public final PWMVictorSPX spinnyMotor = new PWMVictorSPX(3);
+  public final WPI_TalonSRX spinnyMotor = new WPI_TalonSRX(7);
 
 
   public PanelSpinnerSubsystem() {

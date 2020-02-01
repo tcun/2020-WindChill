@@ -7,12 +7,16 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeSubsystem extends SubsystemBase {
   
-  private final PWMVictorSPX rollerMotor = new PWMVictorSPX(7);
+  private final Spark armRollerMotor = new Spark(3);
+  private final Spark conveyorMotor = new Spark(2);
   /**
    * Creates a new ExampleSubsystem.
    */
