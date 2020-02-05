@@ -7,24 +7,24 @@
 
 package frc.robot.commands;
 
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class DriveWithController extends CommandBase {
+public class Shoot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  public final DriveTrainSubsystem m_driveTrainSub;
+  private final ShooterSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public DriveWithController(DriveTrainSubsystem subsystem) {
-    m_driveTrainSub = subsystem;
+  public Shoot(ShooterSubsystem subsystem) {
+    m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -37,14 +37,15 @@ public class DriveWithController extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    m_driveTrainSub.takeXboxInputs(RobotContainer.getXboxController());
-
+    m_subsystem.rightLaunchMotor.set(0.5);
+    m_subsystem.leftLaunchMotor.set(0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_subsystem.rightLaunchMotor.set(0);
+    m_subsystem.leftLaunchMotor.set(0);
   }
 
   // Returns true when the command should end.
