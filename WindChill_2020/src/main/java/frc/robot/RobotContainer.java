@@ -55,6 +55,7 @@ public class RobotContainer {
 
     new JoystickButton(xboxController, Button.kA.value)
         .whenHeld(new SpinControlMotor(m_PanelSpinSub));
+
         
     new JoystickButton(xboxController, Button.kB.value)
         .whileHeld(new Shoot(m_ShootSub));
