@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.analog.adis16448.frc.ADIS16448_IMU;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,16 +24,16 @@ public class DriveTrainSubsystem extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
 
-  private final WPI_TalonSRX leftBackMotor = new WPI_TalonSRX(1);
-  private final WPI_TalonSRX leftFrontMotor = new WPI_TalonSRX(2); 
-  
-  private final WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(3);
-  private final WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(4);
+  private final WPI_TalonSRX leftMotorFront = new WPI_TalonSRX(0);
+  private final WPI_TalonSRX leftMotorBack = new WPI_TalonSRX(1); 
+  private final SpeedControllerGroup leftDriveMotors = new SpeedControllerGroup(leftMotorFront, leftMotorBack);
 
-  private final SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftBackMotor, leftFrontMotor);
-  private final SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightBackMotor, rightFrontMotor);
-  
-  public final DifferentialDrive robotDrive = new DifferentialDrive(leftMotors, rightMotors);
+  private final WPI_TalonSRX rightMotorFront = new WPI_TalonSRX(2); 
+  private final WPI_TalonSRX rightMotorBack = new WPI_TalonSRX(3); 
+  private final SpeedControllerGroup rightDriveMotors = new SpeedControllerGroup(rightMotorFront, rightMotorBack);
+
+
+  public final DifferentialDrive robotDrive = new DifferentialDrive(leftDriveMotors, rightDriveMotors);
   
   public DriveTrainSubsystem() {
 
