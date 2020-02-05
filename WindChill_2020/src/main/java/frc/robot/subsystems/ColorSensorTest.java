@@ -20,7 +20,7 @@
 //  * This is a simple example to show how the REV Color Sensor V3 can be used to
 //  * detect pre-configured colors.
 //  */
-// public class ColorSensorTest extends TimedRobot {
+// public class ColorSensorTest extends SubsystemBase {
 //   /**
 //    * Change the I2C port below to match the connection of your color sensor
 //    */
