@@ -1,31 +1,82 @@
+Optional = *
+Major Priority (Before Eagan) = !
+Don't know = ?
+
 DriveTrainSubsystem
 ======================
-aim
-DriveWithJoysticks
-DriveWithController
-autonomousCommand
+Commands
+    DriveWithJoysticks!
+    DriveWithController!
+    autonomousCommand
+    LineUpToShoot
+CommandGroups
+Methods
+    getGyroAngle
 
 PanelSpinnerSubsystem
 ======================
-SpinControlMotor
-getRotateCount (Encoder)
-getColor (Color Sensor)
-rotateControlMotor
-rotateToColor
-
+Commands
+    SpinControlMotor!
+    DeploySpinPiston!
+    RetractSpinPiston!
+CommandGroups
+    RotateToColor
+    RotateToAmount
+Methods
+    getRotateCount (Encoder)
+    getColor (Color Sensor)
 
 ShooterSubsystem
 ======================
-shoot
-activateConveyor
-checkRPM (Encoder)
-getTargetAngle
+Command
+    Shoot!
+CommandGroup
+Methods 
+    checkRPM (Encoder)
 
 Intake Subsystem
 ======================
-runArmRoller
-reverseSpit
+Command
+    RunArmRoller!
+    ReverseSpit!
+
+    ActivateConveyor!
+    DeactivateConveyor!
+        OR
+    ToggleConveyor!
+
+CommandGroup
+    Intake?
+Methods
+    LimitSwitchCounter*
 
 ClimbSubsystem
 ======================
-???
+Command
+    DeployClimbPiston!
+    RetractClimbPiston!
+    ManualShiftRight!
+    ManualShiftLeft!
+CommandGroup
+    Climb
+    AutoClimb*
+Methods
+    getZ or Y Axis?*
+
+Hybrids
+======================
+CommandGroup
+    AimAndShoot (DriveTrain & Shooter)
+        LimitSwitchCounter to 0
+        Shoot
+        ActivateConveyor
+        DeactivateConveyor
+        Shoot x5
+
+Button Mapping
+======================
+B - Shoot (Press)
+L & R Bumpers - Climb (Press)
+L Trigger - ManualShiftLeft (Held)
+R Trigger - ManualShiftRight (Held)
+A - RunArmRoller (Toggle)
