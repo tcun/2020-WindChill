@@ -19,6 +19,8 @@ import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
 
+import com.analog.adis16448.frc.ADIS16448_IMU;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -31,6 +33,7 @@ public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
 
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final ADIS16448_IMU m_axis = new ADIS16448_IMU();
 
   /**
    * A Rev Color Sensor V3 object is constructed with an I2C port as a 
@@ -122,13 +125,17 @@ public class Robot extends TimedRobot {
 
     /**
      * Open Smart Dashboard or Shuffleboard to see the color detected by the 
-     * sensor.
+     * sensor. 
      */
     SmartDashboard.putNumber("Red", detectedColor.red);
     SmartDashboard.putNumber("Green", detectedColor.green);
     SmartDashboard.putNumber("Blue", detectedColor.blue);
     SmartDashboard.putNumber("Confidence", match.confidence);
     SmartDashboard.putString("Detected Color", colorString);
+
+    SmartDashboard.putNumber("X Angle", m_axis.getGyroAngleX());
+    SmartDashboard.putNumber("Y Angle", m_axis.getGyroAngleY());
+    SmartDashboard.putNumber("Z Angle", m_axis.getGyroAngleY());
   }
 
   /**
