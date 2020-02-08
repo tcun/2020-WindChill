@@ -7,22 +7,25 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.PanelSpinnerSubsystem;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.TriggerSubsystem;
 /**
  * An example command that uses an example subsystem.
  */
-public class SpinControlMotor extends CommandBase {
+public class Balance extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final PanelSpinnerSubsystem m_subsystem;
-
+  private final ClimbSubsystem m_subsystem;
+  double speed;
+  
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public SpinControlMotor(PanelSpinnerSubsystem subsystem) {
+  public Balance(ClimbSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -31,17 +34,23 @@ public class SpinControlMotor extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.spinnyMotor.set(0.1);
+    speed = TriggerSubsystem.CompareTrigAxis(RobotContainer.getXboxController()) * (2/3);
+    if (speed <= 0.2) {
+      speed = 0;
+    }
+    m_subsystem.climbSRX.set(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_subsystem.climbSRX.set(0);
   }
 
   // Returns true when the command should end.

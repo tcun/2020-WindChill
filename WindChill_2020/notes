@@ -75,8 +75,8 @@ CommandGroup
 
 Button Mapping
 ======================
-B - Shoot (Press)
+done B - Shoot (Press)
 L & R Bumpers - Climb (Press)
 L Trigger - ManualShiftLeft (Held)
 R Trigger - ManualShiftRight (Held)
-A - RunArmRoller (Toggle)
+done A - RunArmRoller (Toggle)
