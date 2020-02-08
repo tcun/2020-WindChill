@@ -22,9 +22,6 @@ public class ActivateIntakeWheels extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-
-   boolean check;
-
   public ActivateIntakeWheels(IntakeSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -39,9 +36,7 @@ public class ActivateIntakeWheels extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-
-    m_subsystem.armRollerMotor.set(0.3);
+    m_subsystem.armRollerMotor.set(-0.5);
   }
 
   // Called once the command ends or is interrupted.
@@ -56,4 +51,3 @@ public class ActivateIntakeWheels extends CommandBase {
     return false;
   }
 }
-
