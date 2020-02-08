@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeSubsystem extends SubsystemBase {
   
-  private final Spark armRollerMotor = new Spark(3);
-  private final Spark conveyorMotor = new Spark(2);
+  public final Spark armRollerMotor = new Spark(3);
+  public final Spark conveyorMotor = new Spark(2);
   /**
    * Creates a new ExampleSubsystem.
    */

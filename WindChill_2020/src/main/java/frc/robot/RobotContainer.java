@@ -15,8 +15,10 @@ import frc.robot.commands.DriveWithController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.SpinControlMotor;
+import frc.robot.commands.ActivateIntakeWheels;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PanelSpinnerSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,8 +36,9 @@ public class RobotContainer {
   public final DriveTrainSubsystem m_driveTrainSub = new DriveTrainSubsystem();
   public final PanelSpinnerSubsystem m_PanelSpinSub = new PanelSpinnerSubsystem();
   public final ShooterSubsystem m_ShootSub = new ShooterSubsystem();
+  public final IntakeSubsystem m_intakeSub = new IntakeSubsystem();
 
-  
+
   public static XboxController xboxController = new XboxController(0);
   private static Joystick rightJoystick = new Joystick(0);
   private static Joystick leftJoystick = new Joystick(1);
@@ -53,13 +56,19 @@ public class RobotContainer {
 
     configureButtonBindings();
 
-    new JoystickButton(xboxController, Button.kA.value)
-        .whenHeld(new SpinControlMotor(m_PanelSpinSub));
+    // new JoystickButton(xboxController, Button.kA.value)
+    //     .whenHeld(new SpinControlMotor(m_PanelSpinSub));
 
         
     new JoystickButton(xboxController, Button.kB.value)
         .whileHeld(new Shoot(m_ShootSub));
-  }
+
+    new JoystickButton(xboxController, Button.kA.value)
+        .toggleWhenPressed(new ActivateIntakeWheels(m_intakeSub));
+   
+    // new JoystickButton(xboxController, )
+    //    .toggl(new )
+      }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
