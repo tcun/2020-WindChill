@@ -10,6 +10,9 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+
 // import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 
 public class ClimbSubsystem extends SubsystemBase {
@@ -29,7 +32,10 @@ public class ClimbSubsystem extends SubsystemBase {
   public ClimbSubsystem() {
 
   }
-
+  
+  public void getBumperStatus(XboxController xbox){
+    xbox.getBumper(Hand.kLeft);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

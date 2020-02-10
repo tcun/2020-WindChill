@@ -9,6 +9,10 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.ClimbSubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+// import edu.wpi.first.wpilibj.XboxController;
+// import frc.robot.RobotContainer;
+
 //import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -34,15 +38,20 @@ public class Climb extends CommandBase {
   @Override
   public void initialize() {
     DoubleSolenoid.Value val = m_subsystem.climbSolenoid.get();
-		if(val == DoubleSolenoid.Value.kForward) {
-      m_subsystem.climbSolenoid.set(DoubleSolenoid.Value.kReverse);
-      m_subsystem.climbSolenoid2.set(DoubleSolenoid.Value.kReverse);
-		} else {
-      m_subsystem.climbSolenoid.set(DoubleSolenoid.Value.kForward);
-      m_subsystem.climbSolenoid2.set(DoubleSolenoid.Value.kForward);
+
+    
+
+    if(frc.robot.RobotContainer.xboxController.getBumper(Hand.kLeft) == true) {
+      if(val == DoubleSolenoid.Value.kForward) {
+        m_subsystem.climbSolenoid.set(DoubleSolenoid.Value.kReverse);
+        m_subsystem.climbSolenoid2.set(DoubleSolenoid.Value.kReverse);
+		  } else {
+        m_subsystem.climbSolenoid.set(DoubleSolenoid.Value.kForward);
+        m_subsystem.climbSolenoid2.set(DoubleSolenoid.Value.kForward);
+      }
     }
   }
-
+  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
