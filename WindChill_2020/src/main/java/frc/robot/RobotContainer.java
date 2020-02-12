@@ -17,6 +17,8 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.SpinControlMotor;
 import frc.robot.commands.Climb;
+import frc.robot.commands.ConveyorBackwards;
+import frc.robot.commands.ConveyorForward;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -40,7 +42,7 @@ public class RobotContainer {
   public final ShooterSubsystem m_ShootSub = new ShooterSubsystem();
   public final IntakeSubsystem m_intakeSub = new IntakeSubsystem();
   public final ClimbSubsystem m_ClimbSub = new ClimbSubsystem();
-
+  
   
   public static XboxController xboxController = new XboxController(0);
   private static Joystick rightJoystick = new Joystick(0);
@@ -67,6 +69,12 @@ public class RobotContainer {
 
     new JoystickButton(xboxController, Button.kBumperLeft.value)
         .whenPressed(new Climb(m_ClimbSub));
+
+    new JoystickButton(xboxController, Button.kX.value)
+        .whenHeld(new ConveyorForward(m_intakeSub));
+
+    new JoystickButton(xboxController, Button.kY.value)
+        .whenHeld(new ConveyorBackwards(m_intakeSub));
       }
 
   /**
