@@ -14,8 +14,9 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.ActivateIntakeWheels;
 import frc.robot.commands.DriveWithController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.ReverseIntakeWheels;
 import frc.robot.commands.Shoot;
-import frc.robot.commands.SpinControlMotor;
+// import frc.robot.commands.SpinControlMotor;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ConveyorBackwards;
 import frc.robot.commands.ConveyorForward;
@@ -63,6 +64,9 @@ public class RobotContainer {
 
     new JoystickButton(xboxController, Button.kA.value)
         .toggleWhenPressed(new ActivateIntakeWheels(m_intakeSub));
+
+    new JoystickButton(xboxController, Button.kStart.value)
+        .toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
 
     new JoystickButton(xboxController, Button.kB.value)
         .whileHeld(new Shoot(m_ShootSub));
