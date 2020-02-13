@@ -79,13 +79,11 @@ public class RobotContainer {
     new JoystickButton(xboxController, Button.kA.value)
         .toggleWhenPressed(new ActivateIntakeWheels(m_intakeSub));
 
-    new JoystickButton(xboxController, Button.kBack.value)
+    new JoystickButton(xboxController, Button.kX.value)
         .toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
 
     new JoystickButton(xboxController, Button.kBumperLeft.value)
         .whenPressed(new Climb(m_ClimbSub));
-
-    
       }
 
   /**

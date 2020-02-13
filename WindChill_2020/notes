@@ -75,10 +75,12 @@ CommandGroup
 
 Button Mapping
 ======================
-done B - Shoot (Press)
 done L & R Bumpers - Climb (Press)
 done L Trigger - ManualShiftLeft (Held)
 done R Trigger - ManualShiftRight (Held)
-done A - RunArmRoller (Toggle)
-done Back - ReverseIntakeWheels (Toggle)
-done 
+done B - Shoot (Press)
+done A - ActivateIntakeWheels (Toggle)
+done X - ReverseIntakeWheels (Toggle)
+done Y - LineUpToShoot (Toggle)
+RightStickButton - ConveyorForward
+LeftStickButton - ConveyorBackward
