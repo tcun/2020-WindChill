@@ -20,6 +20,7 @@ import frc.robot.commands.Shoot;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ConveyorBackwards;
 import frc.robot.commands.ConveyorForward;
+import frc.robot.commands.LineUpToShoot;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -62,23 +63,29 @@ public class RobotContainer {
 
     configureButtonBindings();
 
-    new JoystickButton(xboxController, Button.kA.value)
-        .toggleWhenPressed(new ActivateIntakeWheels(m_intakeSub));
+    
+    new JoystickButton(xboxController, Button.kStickRight.value)
+        .whenHeld(new ConveyorForward(m_intakeSub));
 
-    new JoystickButton(xboxController, Button.kStart.value)
-        .toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
+    new JoystickButton(xboxController, Button.kStickLeft.value)
+        .whenHeld(new ConveyorBackwards(m_intakeSub));
 
     new JoystickButton(xboxController, Button.kB.value)
         .whileHeld(new Shoot(m_ShootSub));
+    
+    new JoystickButton(xboxController, Button.kY.value)
+        .toggleWhenPressed(new LineUpToShoot(m_driveTrainSub));
+    
+    new JoystickButton(xboxController, Button.kA.value)
+        .toggleWhenPressed(new ActivateIntakeWheels(m_intakeSub));
+
+    new JoystickButton(xboxController, Button.kBack.value)
+        .toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
 
     new JoystickButton(xboxController, Button.kBumperLeft.value)
         .whenPressed(new Climb(m_ClimbSub));
 
-    new JoystickButton(xboxController, Button.kX.value)
-        .whenHeld(new ConveyorForward(m_intakeSub));
-
-    new JoystickButton(xboxController, Button.kY.value)
-        .whenHeld(new ConveyorBackwards(m_intakeSub));
+    
       }
 
   /**
