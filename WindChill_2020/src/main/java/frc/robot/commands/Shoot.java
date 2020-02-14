@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
@@ -22,6 +23,7 @@ public class Shoot extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
+  boolean isDone = false;
   public Shoot(ShooterSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -38,6 +40,8 @@ public class Shoot extends CommandBase {
   public void execute() {
     m_subsystem.rightLaunchMotor.set(0.5);
     m_subsystem.leftLaunchMotor.set(0.5);
+    Timer.delay(10);
+    isDone = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -50,6 +54,6 @@ public class Shoot extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return isDone;
   }
 }

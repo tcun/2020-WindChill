@@ -17,11 +17,12 @@ public class IntakeSubsystem extends SubsystemBase {
   
   public final Spark armRollerMotor = new Spark(2);
   public final Spark conveyorMotor = new Spark(3);
-  public final DigitalInput LimitSwitch = new DigitalInput(0);
+  public final DigitalInput limitSwitch = new DigitalInput(0);
   /**
    * Creates a new ExampleSubsystem.
    */
-
+  public int limitSwitchCounter = 0;
+  
   public IntakeSubsystem() {
 
   }
