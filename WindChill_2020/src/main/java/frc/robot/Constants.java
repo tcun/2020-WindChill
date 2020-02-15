@@ -16,5 +16,52 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
- 
+    private static double conveyorForwardSpeed = -0.5;
+    private static double conveyorBackwardSpeed = 0.5;
+    private static double shootSpeed = 0.5;
+    private static double intakeSpeed = -0.5;
+    private static double intakeReverseSpeed = 0.5;
+    private static double autoDriveSpeed = 0.3;
+
+    private static long conveyorIntervalTime = 1000;
+    private static long activateConveyorTime = 5000;
+    private static long activateIntakeTime = 1000;
+    private static long autoDriveTime = 3000;
+    private static long shootTime = 10000;
+
+
+    public static double getConveyorForwardSpeed(){
+        return conveyorForwardSpeed;
+    }
+    public static double getConveyorBackwardSpeed(){
+        return conveyorBackwardSpeed;
+    }
+    public static double getShootSpeed(){
+        return shootSpeed;
+    }
+    public static double getIntakeSpeed(){
+        return intakeSpeed;
+    }
+    public static double getIntakeReverseSpeed(){
+        return intakeReverseSpeed;
+    }
+    public static double getAutoDriveSpeed(){
+        return autoDriveSpeed;
+    }
+
+    public static long getConveyorIntervalTime(){
+        return conveyorIntervalTime;
+    }
+    public static long getActivateConveyorTime(){
+        return activateConveyorTime;
+    }
+    public static long getActivateIntakeTime(){
+        return activateIntakeTime;
+    }
+    public static long getAutoDriveTime(){
+        return autoDriveTime;
+    }
+    public static long getShootTime(){
+        return shootTime;
+    }
 }

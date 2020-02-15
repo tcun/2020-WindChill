@@ -7,20 +7,27 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.ActivateIntakeWheels;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.DriveWithController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ReverseIntakeWheels;
+import frc.robot.commands.RunConveyor;
 import frc.robot.commands.Shoot;
+import frc.robot.commands.ShootAll;
 // import frc.robot.commands.SpinControlMotor;
 import frc.robot.commands.Climb;
 import frc.robot.commands.ConveyorBackwards;
 import frc.robot.commands.ConveyorForward;
 import frc.robot.commands.LineUpToShoot;
+import frc.robot.commands.ManualConveyor;
+import frc.robot.commands.ManualIntakeWheels;
+import frc.robot.commands.ManualShoot;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -50,9 +57,10 @@ public class RobotContainer {
   private static Joystick rightJoystick = new Joystick(0);
   private static Joystick leftJoystick = new Joystick(1);
 
-  public final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  public final AutonomousCommand m_autoCommand = new AutonomousCommand(m_driveTrainSub);
 
   public final DriveWithController drive = new DriveWithController(m_driveTrainSub);
+  public final RunConveyor conRun = new RunConveyor(m_intakeSub);
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -62,31 +70,13 @@ public class RobotContainer {
     // Configure the button bindings & default commands
 
     m_driveTrainSub.setDefaultCommand(drive);
+    m_intakeSub.setDefaultCommand(conRun);
 
     configureButtonBindings();
 
     
-    new JoystickButton(xboxController, Button.kStickRight.value)
-        .whenHeld(new ConveyorForward(m_intakeSub));
 
-    new JoystickButton(xboxController, Button.kStickLeft.value)
-        .whenHeld(new ConveyorBackwards(m_intakeSub));
-
-    new JoystickButton(xboxController, Button.kB.value)
-        .whileHeld(new Shoot(m_ShootSub));
-    
-    new JoystickButton(xboxController, Button.kY.value)
-        .toggleWhenPressed(new LineUpToShoot(m_driveTrainSub));
-    
-    new JoystickButton(xboxController, Button.kA.value)
-        .toggleWhenPressed(new ActivateIntakeWheels(m_intakeSub));
-
-    new JoystickButton(xboxController, Button.kX.value)
-        .toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
-
-    new JoystickButton(xboxController, Button.kBumperLeft.value)
-        .whenPressed(new Climb(m_ClimbSub));
-      }
+   }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -95,6 +85,22 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    // B Button - Manual Shoot - Toggle
+    new JoystickButton(xboxController, Button.kB.value)
+        .toggleWhenPressed(new ManualShoot(m_ShootSub));
+    // Y button - Manual Conveyor - Toggle
+    new JoystickButton(xboxController, Button.kY.value)
+        .toggleWhenPressed(new ManualConveyor(m_intakeSub));
+    // A Button - Manual Intake - Toggle
+    new JoystickButton(xboxController, Button.kA.value)
+        .toggleWhenPressed(new ManualIntakeWheels(m_intakeSub));
+    // X Button - Reverse Intake - Toggle
+    new JoystickButton(xboxController, Button.kX.value)
+        .toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
+
+    // Left Bumper - Climb
+    // new JoystickButton(xboxController, Button.kBumperLeft.value)
+    //     .whenPressed(new Climb(m_ClimbSub));
   }
 
   public static XboxController getXboxController() {

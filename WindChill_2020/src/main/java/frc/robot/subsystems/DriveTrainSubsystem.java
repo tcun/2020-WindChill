@@ -25,13 +25,13 @@ public class DriveTrainSubsystem extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
 
-  private final WPI_TalonSRX leftMotorFront = new WPI_TalonSRX(1);
-  private final WPI_TalonSRX leftMotorBack = new WPI_TalonSRX(2); 
-  private final SpeedControllerGroup leftDriveMotors = new SpeedControllerGroup(leftMotorFront, leftMotorBack);
+  public final WPI_TalonSRX leftMotorFront = new WPI_TalonSRX(1);
+  public final WPI_TalonSRX leftMotorBack = new WPI_TalonSRX(2); 
+  public final SpeedControllerGroup leftDriveMotors = new SpeedControllerGroup(leftMotorFront, leftMotorBack);
 
-  private final WPI_TalonSRX rightMotorFront = new WPI_TalonSRX(3); 
-  private final WPI_TalonSRX rightMotorBack = new WPI_TalonSRX(4); 
-  private final SpeedControllerGroup rightDriveMotors = new SpeedControllerGroup(rightMotorFront, rightMotorBack);
+  public final WPI_TalonSRX rightMotorFront = new WPI_TalonSRX(3); 
+  public final WPI_TalonSRX rightMotorBack = new WPI_TalonSRX(4); 
+  public final SpeedControllerGroup rightDriveMotors = new SpeedControllerGroup(rightMotorFront, rightMotorBack);
 
 
   public final DifferentialDrive robotDrive = new DifferentialDrive(leftDriveMotors, rightDriveMotors);

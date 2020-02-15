@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -36,7 +37,7 @@ public class ConveyorBackwards extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.conveyorMotor.set(-0.2);
+    m_subsystem.conveyorMotor.set(Constants.getConveyorBackwardSpeed());
   }
 
   // Called once the command ends or is interrupted.
