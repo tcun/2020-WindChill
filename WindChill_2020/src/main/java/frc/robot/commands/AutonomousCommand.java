@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class AutonomousCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final DriveTrainSubsystem m_subsystem;
   private Delay d;
   /**
@@ -25,7 +25,7 @@ public class AutonomousCommand extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
 
-  private long time = Constants.getAutoDriveTime();
+  private long time = Constants.autoDriveTime;
 
   public AutonomousCommand(DriveTrainSubsystem subsystem) {
     m_subsystem = subsystem;
@@ -42,8 +42,8 @@ public class AutonomousCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.leftDriveMotors.set(Constants.getAutoDriveSpeed());
-    m_subsystem.rightDriveMotors.set(Constants.getAutoDriveSpeed());
+    m_subsystem.leftDriveMotors.set(Constants.autoDriveSpeed);
+    m_subsystem.rightDriveMotors.set(Constants.autoDriveSpeed);
   }
 
   // Called once the command ends or is interrupted.

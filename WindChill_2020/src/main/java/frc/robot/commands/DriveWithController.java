@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class DriveWithController extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   public final DriveTrainSubsystem m_driveTrainSub;
 
   /**
@@ -37,7 +37,7 @@ public class DriveWithController extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+
     m_driveTrainSub.takeXboxInputs(RobotContainer.getXboxController());
 
   }

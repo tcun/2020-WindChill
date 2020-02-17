@@ -10,14 +10,13 @@ package frc.robot.commands;
 import frc.robot.Constants;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.util.Delay;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
 public class ActivateIntakeWheels extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final IntakeSubsystem m_subsystem;
   private Delay d;
   /**
@@ -25,7 +24,7 @@ public class ActivateIntakeWheels extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  private long time = Constants.getActivateIntakeTime();
+  private long time = Constants.activateIntakeTime;
 
   public ActivateIntakeWheels(IntakeSubsystem subsystem) {
     m_subsystem = subsystem;
@@ -42,7 +41,7 @@ public class ActivateIntakeWheels extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.armRollerMotor.set(Constants.getIntakeSpeed());
+    m_subsystem.armRollerMotor.set(Constants.intakeSpeed);
   }
 
   // Called once the command ends or is interrupted.
