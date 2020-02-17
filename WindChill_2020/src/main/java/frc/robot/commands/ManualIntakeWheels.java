@@ -9,14 +9,13 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.IntakeSubsystem;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
 public class ManualIntakeWheels extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final IntakeSubsystem m_subsystem;
 
   /**
@@ -39,10 +38,9 @@ public class ManualIntakeWheels extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(m_subsystem.cancelIntake){
-    m_subsystem.armRollerMotor.set(Constants.getIntakeSpeed());
-    }
-    else{
+    if (!m_subsystem.cancelIntake) {
+      m_subsystem.armRollerMotor.set(Constants.intakeSpeed);
+    } else {
       m_subsystem.armRollerMotor.set(0);
     }
   }

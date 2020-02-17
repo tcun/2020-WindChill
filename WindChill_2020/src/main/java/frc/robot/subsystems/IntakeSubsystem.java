@@ -15,9 +15,9 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeSubsystem extends SubsystemBase {
-  
+
   public final Spark armRollerMotor = new Spark(2);
-  public final Spark conveyorMotor = new Spark(3);
+
   public final DigitalInput limitSwitch = new DigitalInput(0);
 
   public final DoubleSolenoid deployPiston = new DoubleSolenoid(0, 1);
@@ -26,7 +26,7 @@ public class IntakeSubsystem extends SubsystemBase {
    */
   public int limitSwitchCounter = 0;
   public boolean cancelIntake = false;
-  
+
   public IntakeSubsystem() {
 
   }
@@ -35,6 +35,5 @@ public class IntakeSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
 
 }

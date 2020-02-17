@@ -8,17 +8,16 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.util.Delay;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
 public class ActivateConveyor extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final IntakeSubsystem m_subsystem;
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+  private final ConveyorSubsystem m_subsystem;
   private Delay d;
 
   /**
@@ -26,9 +25,9 @@ public class ActivateConveyor extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  private long time = Constants.getActivateConveyorTime();
-  private boolean isDone = false;
-  public ActivateConveyor(IntakeSubsystem subsystem) {
+  private long time = Constants.activateConveyorTime;
+
+  public ActivateConveyor(ConveyorSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -43,8 +42,8 @@ public class ActivateConveyor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.conveyorMotor.set(Constants.getConveyorForwardSpeed());
-    
+    m_subsystem.conveyorMotor.set(Constants.conveyorForwardSpeed);
+
   }
 
   // Called once the command ends or is interrupted.
