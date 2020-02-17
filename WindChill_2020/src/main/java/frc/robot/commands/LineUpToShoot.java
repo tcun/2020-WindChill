@@ -56,7 +56,7 @@ public class LineUpToShoot extends CommandBase {
     // if (turnSpeed > 0.5){
     // turnSpeed = 0.5;
     // }
-    // if (turnError >= -5 || turnError <= 5){
+    // if (turnError >= -5 ++ turnError <= 5){
     // m_subsystem.robotDrive.tankDrive(turnSpeed, -turnSpeed);
     // }
     // if (turnError >= -5 ++ turnError <= 5) {
