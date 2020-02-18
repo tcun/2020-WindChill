@@ -24,7 +24,7 @@ public class IntakeSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public int limitSwitchCounter = 0;
+  public static int limitSwitchCounter = 0;
   public boolean cancelIntake = false;
 
   public IntakeSubsystem() {

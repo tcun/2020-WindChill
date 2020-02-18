@@ -28,7 +28,7 @@ public class Shoot extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
 
-  private long time = 0;
+  private long time = Constants.shootTime;
   boolean isDone = false;
 
   public Shoot(ShooterSubsystem subsystem, IntakeSubsystem intakeSub) {
@@ -47,7 +47,7 @@ public class Shoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.topLaunchMotor.set(Constants.shootSpeed);
+    m_subsystem.topLaunchMotor.set(-Constants.shootSpeed);
     m_subsystem.bottomLaunchMotor.set(Constants.shootSpeed);
 
   }

@@ -32,11 +32,11 @@ public class RunConveyor extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public RunConveyor(IntakeSubsystem subsystem, ConveyorSubsystem conveySub) {
+  public RunConveyor(ConveyorSubsystem conveySub, IntakeSubsystem subsystem) {
     m_subsystem = subsystem;
     m_conveySub = conveySub;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(conveySub);
   }
 
   // Called when the command is initially scheduled.
@@ -48,7 +48,7 @@ public class RunConveyor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_subsystem.limitSwitchCounter < 4) {
+    if (IntakeSubsystem.limitSwitchCounter < 4) {
       if (m_subsystem.limitSwitch.get() == false) {
         m_conveySub.conveyorMotor.set(Constants.conveyorForwardSpeed);
         isRunning = true;
@@ -58,10 +58,10 @@ public class RunConveyor extends CommandBase {
         m_conveySub.conveyorMotor.set(0);
         isRunning = false;
         d = null;
-        m_subsystem.limitSwitchCounter++;
+        IntakeSubsystem.limitSwitchCounter++;
       }
-    } else if (m_subsystem.limitSwitch.get() == true) {
-      m_subsystem.limitSwitchCounter = 5;
+    } else if (m_subsystem.limitSwitch.get() == false && IntakeSubsystem.limitSwitchCounter < 5) {
+      IntakeSubsystem.limitSwitchCounter = 5;
       m_subsystem.cancelIntake = true;
       m_subsystem.armRollerMotor.set(0);
     }
