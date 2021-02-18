@@ -8,19 +8,18 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+// import com.ctre.phoenix.sensors.CANCoder;
 
 // import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ShooterSubsystem extends SubsystemBase {
-
-  public final WPI_TalonSRX topLaunchMotor = new WPI_TalonSRX(5);
-  public final WPI_TalonSRX bottomLaunchMotor = new WPI_TalonSRX(6);
-
+public class PanelSpinnerSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public ShooterSubsystem() {
+  public final WPI_TalonSRX spinnyMotor = new WPI_TalonSRX(7);
+
+  public PanelSpinnerSubsystem() {
 
   }
 
@@ -28,5 +27,4 @@ public class ShooterSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
 }

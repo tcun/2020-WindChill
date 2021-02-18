@@ -7,23 +7,37 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class ExampleCommand extends CommandBase {
+public class LineUpToShoot extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final ExampleSubsystem m_subsystem;
+  private final DriveTrainSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
-   *
+   * 
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ExampleSubsystem subsystem) {
+  public LineUpToShoot(DriveTrainSubsystem subsystem) {
     m_subsystem = subsystem;
+    // double turnP;
+    // double turnI;
+    // double turnError;
+    // double turnIntegral;
+    // double turnSetPoint;
+    // double turnVisionValue;
+    // double turnSpeed;
+    // double moveP;
+    // double moveI;
+    // double moveError;
+    // double moveIntegral;
+    // double moveSetPoint;
+    // double moveVisionValue;
+    // double moveSpeed;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -36,11 +50,32 @@ public class ExampleCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // turnError = turnSetPoint - turnVisionValue;
+    // turnIntegral = turnIntegral + (turnError*20);
+    // turnSpeed = (P*error + I*integral)/2;
+    // if (turnSpeed > 0.5){
+    // turnSpeed = 0.5;
+    // }
+    // if (turnError >= -5 ++ turnError <= 5){
+    // m_subsystem.robotDrive.tankDrive(turnSpeed, -turnSpeed);
+    // }
+    // if (turnError >= -5 ++ turnError <= 5) {
+    // moveError = moveSetPoint - moveVisionValue;
+    // moveIntegral = moveIntegral + (moveError*20);
+    // moveSpeed = (moveP*moveError + moveI*moveIntegral)/2;
+    // }
+    // if (moveSpeed > 0.3){
+    // move speed = 0.3;
+    // }
+    // if (moveError >= -5 ++ moveError <= 5)
+    // m_subsystem.robotDrive.tankDrive(moveSpeed, moveSpeed);
+    // }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_subsystem.robotDrive.tankDrive(0, 0);
   }
 
   // Returns true when the command should end.

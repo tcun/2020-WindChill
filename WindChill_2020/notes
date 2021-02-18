@@ -1,0 +1,86 @@
+Optional = *
+Major Priority (Before Eagan) = !
+Don't know = ?
+
+DriveTrainSubsystem
+======================
+Commands
+    DriveWithJoysticks!
+    DriveWithController!
+    autonomousCommand
+    LineUpToShoot
+CommandGroups
+Methods
+    getGyroAngle
+
+PanelSpinnerSubsystem
+======================
+Commands
+    SpinControlMotor!
+    DeploySpinPiston!
+    RetractSpinPiston!
+CommandGroups
+    RotateToColor
+    RotateToAmount
+Methods
+    getRotateCount (Encoder)
+    getColor (Color Sensor)
+
+ShooterSubsystem
+======================
+Command
+    Shoot!
+CommandGroup
+Methods 
+    checkRPM (Encoder)
+
+Intake Subsystem
+======================
+Command
+    RunArmRoller!
+    ReverseSpit!
+
+    ActivateConveyor!
+    DeactivateConveyor!
+        OR
+    ToggleConveyor!
+
+CommandGroup
+    Intake?
+Methods
+    LimitSwitchCounter*
+
+ClimbSubsystem
+======================
+Command
+    DeployClimbPiston!
+    RetractClimbPiston!
+    ManualShiftRight!
+    ManualShiftLeft!
+CommandGroup
+    Climb
+    AutoClimb*
+Methods
+    getZ or Y Axis?*
+
+Hybrids
+======================
+CommandGroup
+    AimAndShoot (DriveTrain & Shooter)
+        LimitSwitchCounter to 0
+        Shoot
+        ActivateConveyor
+        DeactivateConveyor
+        Shoot x5
+        
+Button Mapping
+======================
+done L & R Bumpers - Climb (Press)
+done L Trigger - ManualShiftLeft (Held)
+done R Trigger - ManualShiftRight (Held)
+done B - Shoot (Press)
+done A - ActivateIntakeWheels (Toggle)
+done X - ReverseIntakeWheels (Toggle)
+done Y - LineUpToShoot (Toggle)
+RightStickButton - ConveyorForward
+LeftStickButton - ConveyorBackward

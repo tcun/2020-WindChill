@@ -7,22 +7,27 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.Constants;
+import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.util.Delay;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class ExampleCommand extends CommandBase {
+public class AutonomousCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final ExampleSubsystem m_subsystem;
-
+  private final DriveTrainSubsystem m_subsystem;
+  private Delay d;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ExampleSubsystem subsystem) {
+
+  private long time = Constants.autoDriveTime;
+
+  public AutonomousCommand(DriveTrainSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -31,21 +36,26 @@ public class ExampleCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    d = new Delay(time);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    m_subsystem.leftDriveMotors.set(Constants.autoDriveSpeed);
+    m_subsystem.rightDriveMotors.set(Constants.autoDriveSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_subsystem.leftDriveMotors.set(0);
+    m_subsystem.rightDriveMotors.set(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return d.isExpired();
   }
 }

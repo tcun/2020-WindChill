@@ -7,20 +7,27 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+// import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 // import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ShooterSubsystem extends SubsystemBase {
+public class IntakeSubsystem extends SubsystemBase {
 
-  public final WPI_TalonSRX topLaunchMotor = new WPI_TalonSRX(5);
-  public final WPI_TalonSRX bottomLaunchMotor = new WPI_TalonSRX(6);
+  public final Spark armRollerMotor = new Spark(2);
 
+  public final DigitalInput limitSwitch = new DigitalInput(0);
+
+  public final DoubleSolenoid deployPiston = new DoubleSolenoid(0, 1);
   /**
    * Creates a new ExampleSubsystem.
    */
-  public ShooterSubsystem() {
+  public static int limitSwitchCounter = 0;
+  public boolean cancelIntake = false;
+
+  public IntakeSubsystem() {
 
   }
 
