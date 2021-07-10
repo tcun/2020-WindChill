@@ -7,30 +7,24 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-// import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-// import edu.wpi.first.wpilibj.XboxController;
-// import frc.robot.RobotContainer;
-
-//import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class Climb extends CommandBase {
+public class DeployIntake extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final ClimbSubsystem m_subsystem;
+  private final IntakeSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Climb(ClimbSubsystem subsystem) {
+  public DeployIntake(IntakeSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -39,14 +33,13 @@ public class Climb extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-     DoubleSolenoid.Value val = m_subsystem.climbSolenoid.get();
+    DoubleSolenoid.Value val = m_subsystem.deployPiston.get();
      if(val == Value.kForward){
-       m_subsystem.climbSolenoid.set(Value.kReverse);
+       m_subsystem.deployPiston.set(Value.kReverse);
      }
      else{
-      m_subsystem.climbSolenoid.set(Value.kForward);
+      m_subsystem.deployPiston.set(Value.kForward);
      }
-
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -57,8 +50,6 @@ public class Climb extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // m_subsystem.climbSolenoid.set(Value.kOff);
-    // m_subsystem.climbSolenoid2.set(Value.kOff);
   }
 
   // Returns true when the command should end.

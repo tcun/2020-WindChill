@@ -9,16 +9,16 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 // import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
+
 // import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 
 public class ClimbSubsystem extends SubsystemBase {
-  // public final WPI_TalonSRX climbSRX = new WPI_TalonSRX(7);
-  // public final DoubleSolenoid climbSolenoid = new DoubleSolenoid(1, 2);
-  // public final DoubleSolenoid climbSolenoid2 = new DoubleSolenoid(/* The PCM CAN ID */ 9, 4, 5);
+  public final DoubleSolenoid climbSolenoid = new DoubleSolenoid(2, 3);
 
   // exampleDouble.set(kOff);
   // exampleDouble.set(kForward);

@@ -7,30 +7,26 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ClimbSubsystem;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-// import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-// import edu.wpi.first.wpilibj.XboxController;
-// import frc.robot.RobotContainer;
-
-//import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import frc.robot.Constants;
+import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class Climb extends CommandBase {
+public class GyroTurnLeft extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final ClimbSubsystem m_subsystem;
+  private final DriveTrainSubsystem m_subsystem;
 
+  private long time = Constants.autoDriveTime;
+  public double angle = 0;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Climb(ClimbSubsystem subsystem) {
+  public GyroTurnLeft(DriveTrainSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -39,31 +35,29 @@ public class Climb extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-     DoubleSolenoid.Value val = m_subsystem.climbSolenoid.get();
-     if(val == Value.kForward){
-       m_subsystem.climbSolenoid.set(Value.kReverse);
-     }
-     else{
-      m_subsystem.climbSolenoid.set(Value.kForward);
-     }
-
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // angle = m_subsystem.gyro.getAngle();
+    m_subsystem.leftDriveMotors.set(Constants.autoDriveSpeed);
+    m_subsystem.rightDriveMotors.set(Constants.autoDriveSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // m_subsystem.climbSolenoid.set(Value.kOff);
-    // m_subsystem.climbSolenoid2.set(Value.kOff);
+    m_subsystem.leftDriveMotors.set(0);
+    m_subsystem.rightDriveMotors.set(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    //add gyro logic
+    
+    return angle > 35 && angle < 40;
+    // return angle > 320 && angle < 325;
   }
 }

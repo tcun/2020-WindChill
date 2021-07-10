@@ -12,10 +12,14 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.AutonomousCommand;
+import frc.robot.commands.Climb;
+import frc.robot.commands.ConveyorBackwards;
+import frc.robot.commands.DeployIntake;
 import frc.robot.commands.DriveWithController;
 import frc.robot.commands.ReverseIntakeWheels;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.ShootAll;
+import frc.robot.commands.TurnOnLed;
 // import frc.robot.commands.SpinControlMotor;
 import frc.robot.commands.ManualConveyor;
 import frc.robot.commands.ManualIntakeWheels;
@@ -55,7 +59,7 @@ public class RobotContainer {
   // Commands
   public final DriveWithController drive = new DriveWithController(m_driveTrainSub);
   public final RunConveyor conRun = new RunConveyor(m_conveySub, m_intakeSub);
-  public final AutonomousCommand m_autoCommand = new AutonomousCommand(m_driveTrainSub);
+  public final AutonomousCommand m_autoCommand = new AutonomousCommand(m_driveTrainSub, m_intakeSub, m_ShootSub, m_conveySub);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -79,13 +83,20 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // B Button - Manual Shoot - Toggle
-    new JoystickButton(xboxController, Button.kB.value).toggleWhenPressed(new ShootAll(m_intakeSub, m_ShootSub, m_conveySub));
+    new JoystickButton(xboxController, Button.kB.value).toggleWhenPressed(new ShootAll(m_driveTrainSub, m_intakeSub, m_ShootSub, m_conveySub));
     // Y button - Manual Conveyor - Toggle
     new JoystickButton(xboxController, Button.kY.value).toggleWhenPressed(new ManualConveyor(m_conveySub));
     // A Button - Manual Intake - Toggle
     new JoystickButton(xboxController, Button.kA.value).toggleWhenPressed(new ManualIntakeWheels(m_intakeSub));
     // X Button - Reverse Intake - Toggle
     new JoystickButton(xboxController, Button.kX.value).toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
+    
+    new JoystickButton(xboxController, Button.kStickRight.value).toggleWhenPressed(new ConveyorBackwards(m_conveySub));
+    new JoystickButton(xboxController, Button.kBack.value).toggleWhenPressed(new TurnOnLed(m_driveTrainSub));
+
+
+    new JoystickButton(xboxController, Button.kBumperLeft.value).whenPressed(new DeployIntake(m_intakeSub));
+    new JoystickButton(xboxController, Button.kBumperRight.value).whenPressed(new Climb(m_ClimbSub));
 
     // Left Bumper - Climb
     // new JoystickButton(xboxController, Button.kBumperLeft.value)

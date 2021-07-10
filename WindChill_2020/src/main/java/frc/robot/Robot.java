@@ -10,7 +10,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.LineUpToShoot;
+import frc.robot.commands.TurnOnLed;
+import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
@@ -32,6 +37,10 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  private final CameraServer server = CameraServer.getInstance();
+  //private final CameraServer shoot = CameraServer.getInstance(1);
+
+  private final DriveTrainSubsystem m_drivetrain = new DriveTrainSubsystem();
 
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ADIS16448_IMU m_axis = new ADIS16448_IMU();
@@ -70,6 +79,7 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    server.startAutomaticCapture();
 
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
@@ -137,11 +147,20 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Confidence", match.confidence);
     SmartDashboard.putString("Detected Color", colorString);
 
-    SmartDashboard.putNumber("X Angle", m_axis.getGyroAngleX());
-    SmartDashboard.putNumber("Y Angle", m_axis.getGyroAngleY());
-    SmartDashboard.putNumber("Z Angle", m_axis.getGyroAngleY());
+    SmartDashboard.putBoolean("isTarget", LimelightSubsystem.isTarget());
+		SmartDashboard.putNumber("Tv", LimelightSubsystem.getTv());
+		SmartDashboard.putNumber("Tx", LimelightSubsystem.getTx());
+		SmartDashboard.putNumber("Ty", LimelightSubsystem.getTy());
+		SmartDashboard.putNumber("Ta", LimelightSubsystem.getTa());
+		SmartDashboard.putNumber("Tl", LimelightSubsystem.getTl());
+		SmartDashboard.putNumber("Ts", LimelightSubsystem.getTs());
+
+    SmartDashboard.putData("Test LED", new TurnOnLed(m_drivetrain));
+    SmartDashboard.putData("LineUpToShoot", new LineUpToShoot(m_drivetrain));
     
     SmartDashboard.putNumber("Limit Switch Counter", IntakeSubsystem.limitSwitchCounter);
+    
+   
   }
   /**
    * This autonomous runs the autonomous command selected by your

@@ -42,7 +42,6 @@ public class RunConveyor extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_subsystem.deployPiston.set(Value.kForward);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

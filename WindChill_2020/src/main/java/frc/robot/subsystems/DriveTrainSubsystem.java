@@ -14,11 +14,15 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // import com.analog.adis16448.frc.ADIS16448_IMU;
 
+import com.analog.adis16448.frc.ADIS16448_IMU;
 // import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.sensors.CANCoder;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PWM;
 
 public class DriveTrainSubsystem extends SubsystemBase {
   /**
@@ -35,11 +39,16 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   public final DifferentialDrive robotDrive = new DifferentialDrive(leftDriveMotors, rightDriveMotors);
 
+  // public final DigitalOutput di = new DigitalOutput(1);
+  public final WPI_TalonSRX LED = new WPI_TalonSRX(7);
+
+  // public final ADIS16448_IMU gyro = new ADIS16448_IMU();
+
   CANCoder leftFrontEncoder = new CANCoder(0);
   CANCoder rightFrontEncoder = new CANCoder(1);
 
   public DriveTrainSubsystem() {
-
+    
   }
 
   public void takeXboxInputs(XboxController xbox) {
