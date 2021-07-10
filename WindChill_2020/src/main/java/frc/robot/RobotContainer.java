@@ -19,6 +19,7 @@ import frc.robot.commands.DriveWithController;
 import frc.robot.commands.ReverseIntakeWheels;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.ShootAll;
+import frc.robot.commands.Shoot;
 import frc.robot.commands.TurnOnLed;
 // import frc.robot.commands.SpinControlMotor;
 import frc.robot.commands.ManualConveyor;
@@ -89,7 +90,7 @@ public class RobotContainer {
     // A Button - Manual Intake - Toggle
     new JoystickButton(xboxController, Button.kA.value).toggleWhenPressed(new ManualIntakeWheels(m_intakeSub));
     // X Button - Reverse Intake - Toggle
-    new JoystickButton(xboxController, Button.kX.value).toggleWhenPressed(new ReverseIntakeWheels(m_intakeSub));
+    new JoystickButton(xboxController, Button.kX.value).toggleWhenPressed(new Shoot(m_conveySub, m_intakeSub));
     
     new JoystickButton(xboxController, Button.kStickRight.value).toggleWhenPressed(new ConveyorBackwards(m_conveySub));
     new JoystickButton(xboxController, Button.kBack.value).toggleWhenPressed(new TurnOnLed(m_driveTrainSub));
