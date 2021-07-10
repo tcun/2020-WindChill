@@ -8,13 +8,14 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ConveyorSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public final Spark conveyorMotor = new Spark(3);
+  public final WPI_TalonSRX conveyorMotor = new WPI_TalonSRX(8);
 
   public ConveyorSubsystem() {
     
