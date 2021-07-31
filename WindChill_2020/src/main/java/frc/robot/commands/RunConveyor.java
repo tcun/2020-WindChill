@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.ConveyorSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.util.Delay;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -19,7 +18,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  */
 public class RunConveyor extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final IntakeSubsystem m_subsystem;
   private final ConveyorSubsystem m_conveySub;
 
   private Delay d = null;
@@ -32,8 +30,7 @@ public class RunConveyor extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public RunConveyor(ConveyorSubsystem conveySub, IntakeSubsystem subsystem) {
-    m_subsystem = subsystem;
+  public RunConveyor(ConveyorSubsystem conveySub) {
     m_conveySub = conveySub;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(conveySub);
@@ -47,7 +44,7 @@ public class RunConveyor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (IntakeSubsystem.limitSwitchCounter < 4) {
+    /*if (IntakeSubsystem.limitSwitchCounter < 4) {
       if (m_subsystem.limitSwitch.get() == false) {
         m_conveySub.conveyorMotor.set(Constants.conveyorForwardSpeed);
         isRunning = true;
@@ -63,7 +60,8 @@ public class RunConveyor extends CommandBase {
       IntakeSubsystem.limitSwitchCounter = 5;
       m_subsystem.cancelIntake = true;
       m_subsystem.armRollerMotor.set(0);
-    }
+    }*/
+    m_conveySub.conveyorMotor.set(Constants.conveyorForwardSpeed);
   }
 
   // Called once the command ends or is interrupted.

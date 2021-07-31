@@ -6,25 +6,23 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 
 public class AutonomousCommand extends SequentialCommandGroup {
 
-  public AutonomousCommand(DriveTrainSubsystem m_drive, IntakeSubsystem m_intake, ShooterSubsystem m_shoot, ConveyorSubsystem m_convey) {
+  public AutonomousCommand(DriveTrainSubsystem m_drive, ShooterSubsystem m_shoot, ConveyorSubsystem m_convey) {
     addCommands(
       new DriveForward(m_drive), 
       new GyroTurnLeft(m_drive),
-      new ShootAll(m_drive, m_intake, m_shoot, m_convey),
+      new ShootAll(m_drive, m_shoot, m_convey),
       new GyroTurnRight(m_drive),
       new ParallelCommandGroup(
         new DriveForward(m_drive),
-        new ActivateIntakeWheels(m_intake), // Change to different time
         new ActivateConveyor(m_convey)), 
         new DriveBackward(m_drive), // Calibrate Time
         new GyroTurnLeft(m_drive),
-        new ShootAll(m_drive, m_intake, m_shoot, m_convey)
+        new ShootAll(m_drive, m_shoot, m_convey)
    
      
       

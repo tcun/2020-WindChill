@@ -15,7 +15,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public final WPI_TalonSRX conveyorMotor = new WPI_TalonSRX(8);
+  public final WPI_TalonSRX conveyorMotor = new WPI_TalonSRX(7);
 
   public ConveyorSubsystem() {
     

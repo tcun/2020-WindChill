@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.ConveyorSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.util.Delay;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -38,7 +37,6 @@ public class ActivateConveyor extends CommandBase {
   @Override
   public void initialize() {
     d = new Delay(time);
-    IntakeSubsystem.limitSwitchCounter = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.

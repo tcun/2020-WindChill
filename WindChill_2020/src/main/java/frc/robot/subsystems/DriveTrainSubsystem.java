@@ -52,7 +52,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void takeXboxInputs(XboxController xbox) {
-    robotDrive.tankDrive(-xbox.getY(Hand.kLeft), -xbox.getY(Hand.kRight));
+    robotDrive.tankDrive(.5 * xbox.getY(Hand.kRight), .5 * xbox.getY(Hand.kLeft));
   }
 
   public void takeJoystickInputs(Joystick leftJoy, Joystick rightJoy) {

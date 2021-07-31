@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.util.Delay;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -19,7 +18,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class Shoot extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final ShooterSubsystem m_subsystem;
-  private final IntakeSubsystem m_intakeSub;
   private Delay d;
 
   /**
@@ -31,8 +29,7 @@ public class Shoot extends CommandBase {
   private long time = Constants.shootTime;
   boolean isDone = false;
 
-  public Shoot(ShooterSubsystem subsystem, IntakeSubsystem intakeSub) {
-    m_intakeSub = intakeSub;
+  public Shoot(ShooterSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -57,7 +54,6 @@ public class Shoot extends CommandBase {
   public void end(boolean interrupted) {
     m_subsystem.topLaunchMotor.set(0);
     m_subsystem.bottomLaunchMotor.set(0);
-    m_intakeSub.cancelIntake = false;
   }
 
   // Returns true when the command should end.

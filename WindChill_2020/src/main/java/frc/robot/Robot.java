@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.LineUpToShoot;
 import frc.robot.commands.TurnOnLed;
 import frc.robot.subsystems.DriveTrainSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.I2C;
@@ -157,8 +156,6 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putData("Test LED", new TurnOnLed(m_drivetrain));
     SmartDashboard.putData("LineUpToShoot", new LineUpToShoot(m_drivetrain));
-    
-    SmartDashboard.putNumber("Limit Switch Counter", IntakeSubsystem.limitSwitchCounter);
     
    
   }
