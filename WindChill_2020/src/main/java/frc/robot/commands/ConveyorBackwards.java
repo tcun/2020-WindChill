@@ -37,13 +37,13 @@ public class ConveyorBackwards extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.conveyorMotor.set(Constants.conveyorBackwardSpeed);
+    //m_subsystem.conveyorMotor.set(Constants.conveyorBackwardSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_subsystem.conveyorMotor.set(0);
+    //m_subsystem.conveyorMotor.set(0);
   }
 
   // Returns true when the command should end.

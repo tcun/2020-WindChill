@@ -44,8 +44,8 @@ public class Shoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.topLaunchMotor.set(-Constants.shootSpeed);
-    m_subsystem.bottomLaunchMotor.set(Constants.shootSpeed);
+    m_subsystem.topLaunchMotor.set(-.85*Constants.shootSpeed);
+    m_subsystem.bottomLaunchMotor.set(.85*Constants.shootSpeed);
 
   }
 
@@ -57,7 +57,7 @@ public class Shoot extends CommandBase {
   }
 
   // Returns true when the command should end.
-  @Override
+  @Override`
   public boolean isFinished() {
     return d.isExpired();
   }

@@ -61,7 +61,7 @@ public class RunConveyor extends CommandBase {
       m_subsystem.cancelIntake = true;
       m_subsystem.armRollerMotor.set(0);
     }*/
-    m_conveySub.conveyorMotor.set(Constants.conveyorForwardSpeed);
+    //m_conveySub.conveyorMotor.set(0);
   }
 
   // Called once the command ends or is interrupted.
